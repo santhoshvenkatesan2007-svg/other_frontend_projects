@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+</head>
+<body>
+    
+</body>
+</html>
+<html lang="en">
+<head>
+
+
+<style>
+    body {
+        background: linear-gradient(135deg, #ff66c4, #ffb3e6);
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .box {
+        background-color: #2b2b2b;
+        color: #ffe089;
+        padding: 30px;
+        border-radius: 15px;
+        width: 350px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    input {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        margin-bottom: 12px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: none;
+        margin: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: 0.2s;
+        background-color: #ffe089;
+        color: #2b2b2b;
+    }
+
+    .btn:hover {
+        transform: scale(1.08);
+        background-color: #ffdb6e;
+    }
+
+    #result {
+        margin-top: 10px;
+        font-size: 18px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .correct {
+        color: #6aff7a;
+        text-shadow: 0 0 10px #6aff7a;
+    }
+
+    .wrong {
+        color: #ff6969;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="box">
+    <h1>Guess the Number</h1>
+    <h3>Pick between 1 and 10</h3>
+
+    <input type="number" id="number" placeholder="Enter your guess">
+
+    <button onclick="game()" class="btn">Check</button>
+    <button onclick="resetGame()" class="btn">Reset</button>
+
+    <p id="result"></p>
+    <p id="score">Score: 10</p>
+</div>
+
+<script>
+    let randomnumber = Math.floor(Math.random() * 10) + 1;
+    let totalscore = 10;
+
+    function game() {
+        const input = document.getElementById("number");
+        const result = document.getElementById("result");
+        const score = document.getElementById("score");
+
+        let guess = Number(input.value);
+
+        if (!guess || guess < 1 || guess > 10) {
+            result.textContent = "Enter a valid number.";
+            showResult("wrong");
+            return;
+        }
+
+        if (guess === randomnumber) {
+            result.textContent = "Correct! Nice one.";
+            showResult("correct");
+            setTimeout(() => {
+                alert("You Won! Score: " + totalscore);
+            }, 200);
+        } else {
+            totalscore--;
+            result.textContent = "Wrong guess.";
+            showResult("wrong");
+            score.textContent = "Score: " + totalscore;
+
+            if (totalscore === 0) {
+                setTimeout(() => {
+                    alert("You Lost. The number was " + randomnumber);
+                }, 300);
+            }
+        }
+    }
+
+    function showResult(type) {
+        const r = document.getElementById("result");
+        r.className = type;
+        r.style.opacity = 1;
+    }
+
+    function resetGame() {
+        randomnumber = Math.floor(Math.random() * 10) + 1;
+        totalscore = 10;
+        document.getElementById("score").textContent = "Score: 10";
+        document.getElementById("result").textContent = "";
+        document.getElementById("result").style.opacity = 0;
+        document.getElementById("number").value = "";
+    }
+</script>
+
+</body>
+</html>

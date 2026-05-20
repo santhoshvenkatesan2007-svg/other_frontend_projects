@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="finisher-header.es5.min.js" type="text/javascript"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <title>Know Your Cutoff</title>
+</head>
+
+<body>
+    <style>
+        * {
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: rgb(193, 193, 9);
+        }
+
+        table {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: black;
+            font-weight: 1000;
+            margin-top: 50px;
+        }
+
+        .title {
+            font-weight: 700;
+            font-style: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .subtitle {
+            font-weight: 300;
+            font-style: oblique;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .subject_name {
+            font-weight: 400;
+            font-style: normal;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            width: 300px;
+            height: 30px;
+            border-radius: 10px;
+            border-width:1px;
+        }
+
+        .btn {
+            font-size: medium;
+            padding: 10px;
+            margin-top: 10px;
+            margin-left: 10px;
+            border-radius: 10px;
+            border: solid orange 1px;
+            background-color: orangered;
+            color: yellow;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 10px rgb(0, 0, 0, 0.4);
+        }
+
+        .btn:hover {
+            cursor: pointer;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 10px rgb(0, 0, 0, 0.2);
+        }
+
+        .result {
+            font-weight: 450;
+            font-style: normal;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <center>
+        <h1>Cutoff Calculator</h1>
+    </center>
+    </div>
+
+    <form>
+        <table class="table1">
+            <h2 class="title"> For Science Group </h2>
+            <tr>
+                <td class="subject_name">Physics</td>
+                <td><input type="number" id="num1" min="0" max="100" placeholder="Enter your Physics marks" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td class="subject_name">Chemistry</td>
+                <td><input type="number" id="num2" min="0" max="100" placeholder="Enter your Chemistry marks" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td class="subject_name">Mathematics</td>
+                <td><input type="number" id="num3" min="0" max="100" placeholder="Enter your Mathematics marks" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><button type="reset" class="btn">Reset</button></td>
+                <td><button type="button" class="btn" onclick="calc1()">Calculate</button></td>
+            </tr>
+
+        </table>
+    </form>
+
+    <p id="result1" class="result">Cutoff : 0</p>
+    <form>
+        <table class="table2">
+            <h2 class="title"> For Commerce , Arts Groups etc... </h2>
+            <h4 class="subtitle">Enter the marks of your four major subjects</h4>
+            <tr>
+                <td class="subject_name">Subject 1</td>
+                <td><input type="number" id="num4" placeholder="Enter your marks" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td class="subject_name">Subject 2</td>
+                <td><input type="number" id="num5" placeholder="Enter your marks" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td class="subject_name">Subject 3</td>
+                <td><input type="number" id="num6" placeholder="Enter your marks" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td class="subject_name">Subject 4</td>
+                <td><input type="number" id="num7" placeholder="Enter your marks" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><button type="reset" class="btn">Reset</button></td>
+                <td><button type="button" class="btn" onclick="calc2()">Calculate</button></td>
+            </tr>
+        </table>
+    </form>
+    </center>
+
+    <p id="result2" class="result">Cutoff : 0</p>
+
+    <script>
+
+        var phy = document.getElementById("num1")
+        var chem = document.getElementById("num2")
+        var mat = document.getElementById("num3")
+
+        var first = document.getElementById("num4")
+        var second = document.getElementById("num5")
+        var third = document.getElementById("num6")
+        var fourth = document.getElementById("num7")
+
+
+        function calc1() {
+            var pval = Number(phy.value)
+            var cval = Number(chem.value)
+            var mval = Number(mat.value)
+
+            if (pval < 0 || cval< 0 || mval < 0) {
+                alert("Marks should be greater than or equal to 0")
+            }
+
+            else {
+                var total_1 = ((pval + cval) / 2) + mval
+                result1.textContent = "Cutoff : " + total_1 + "/200"
+            }
+        }
+
+        function calc2() {
+            var fval = Number(first.value)
+            var sval = Number(second.value)
+            var tval = Number(third.value)
+            var foval = Number(fourth.value)
+
+            if (fval < 0 || sval < 0 || tval < 0 || foval < 0) {
+                alert("Marks should be greater than or equal to 0")
+            }
+
+            else {
+                var total_2 = fval + sval + tval + foval
+                result2.textContent = "Cutoff : " + total_2 + "/400"
+            }
+        }
+    </script>
+
+</body>
+
+</html>

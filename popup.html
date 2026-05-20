@@ -1,0 +1,96 @@
+<style>
+    body {
+        background: lightgreen;
+    }
+
+    .overlay {
+        background: black;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        opacity: 0.5;
+        z-index: 1;
+        display: none;
+    }
+
+    .popupbox {
+        position: absolute;
+        z-index: 1;
+        background: white;
+        color: black;
+        width: 40%;
+        padding: 20px;
+        border-radius: 10px;
+        left: 30%;
+        top: 30%;
+        display: none;
+    }
+
+    .btn {
+        background: gold;
+        color: black;
+        margin-top: 20px;
+        margin-left: 45%;
+        margin-right: 45%;
+        padding: 10px;
+        border-radius: 10px;
+        border: solid 1px brown;
+    }
+
+    .btn:hover {
+        background: brown;
+        color: gold;
+        cursor: pointer;
+    }
+
+    input {
+        height: 30px;
+        width: 250px;
+        border: solid 1px;
+        border-radius: 10px;
+    }
+
+    select {
+        height: 30px;
+        width: 250px;
+        border: solid 1px;
+        border-radius: 10px;
+    }
+</style>
+
+<button onclick="show()" class="btn" id="btn" name="button">Click Here</button>
+<div class="overlay"></div>
+<div class="popupbox">
+    <form>
+        <table>
+            <tr>
+                <td>This Page is trying to open Youtube. Do you want to open ?</td>
+                <td><button type="submit" onclick="hide()" class="btn">No</button></td>
+                <td><button type="reset" class="btn" onclick="openthis()">Yes</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<script>
+
+    var popupoverlay = document.querySelector(".overlay")
+    var popupbox = document.querySelector(".popupbox")
+
+    function show() {
+        popupoverlay.style.display = "block"
+        popupbox.style.display = "block"
+    }
+    function hide() {
+        popupoverlay.style.display = "none"
+        popupbox.style.display = "none"
+    }
+    function openthis() {
+        window.open('https://www.youtube.com/')
+    }
+
+    dialog.addEventListener("click",() => popupoverlay.style.display == "none" & popupbox.style.display == "none")
+
+</script>

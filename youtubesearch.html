@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Search</title>
+  <style>
+    body {
+      font-style: italic;
+      font-size: large;
+    }
+    .card {
+      background-color: rgb(255, 60, 0);
+      height: 450px;
+      width: 450px;
+      padding: 20px;
+      margin-top: 100px;
+      margin-left: 525px;
+      display: flex;
+      justify-content: center;
+      border-radius: 10px;
+      box-shadow: 0 10px 10px rgb(0, 0, 0, 0.6);
+    }
+    input {
+      width: 200px;
+      height: 30px;
+      border-radius: 10px;
+      border: solid black 1px;
+    }
+    button {
+      font-size: large;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+    .btn {
+      background-color: orange;
+      color: brown;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 10px rgb(0, 0, 0, 0.4);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 10px rgb(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+    <center><h1>Youtube searcher</h1></center>
+    <form class="card" onsubmit="return search()">
+    <table>
+      <tr>
+        <td>Search YouTube</td>
+        <td> <input type="text" id="input" placeholder="Type something..."></td>
+      </tr>
+      <tr>
+        <td><button class="btn" type="submit">Search</button></td>
+        <td><button class="btn" type="reset">Clear</button></td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+    function search() {
+      const input = document.getElementById("input").value.trim();
+      if (input === "") {
+        alert("Bruh... type something.");
+        return false;
+      }
+
+      // Redirect to YouTube search results
+      const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(input)}`;
+      window.open(searchUrl, "_blank");
+      return false; // Prevent form submission reload
+    }
+  </script>
+
+</body>
+</html>
