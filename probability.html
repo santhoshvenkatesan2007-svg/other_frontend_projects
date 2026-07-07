@@ -207,15 +207,14 @@
     <script>
         
         function factorial(n) {
-            if (n === 0 || n === 1) {
-                return 1
+            if (n < 0) return NaN;
+
+            let result = 1;
+            for (let i = 2; i <= n; i++) {
+                result *= i;
             }
-            else if (n < 0) {
-                return NaN;
-            }
-            else {
-                return n * factorial(n - 1)
-            }
+
+            return result;
         }
         function binomial_calculate() {
             var nValue = Number(document.getElementById("n").value)
